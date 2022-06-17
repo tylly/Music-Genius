@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+body {
+    font-family: lato;
+    /* background-image: url("css/carti.jpg"); */
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+}
+
+#top{
+    color: #1DB954;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#homeBut{
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    border: 1px solid #1DB954;
+    border-radius: 50px;
+    font-size: 15px;
+    padding: 20px 20px 20px 20px;
+    margin-top: 120px;   
+}
+
+#disclaim{
+    color: #1DB954;
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    font-size: 8px;
+}
