@@ -2,6 +2,9 @@ Are you a music genius?
 
 This is a trivia game that will test a player's knowledge of music. It will rely on data fetched from the Spotify API, and it will be an interactive expirience with varying levels of user input to determine what questions are being asked.
 
+
+(Note, the following paragraph is how I would want a final, full APP to function. This is a large undertaking for one week, so for the purpose of this class, I will likely only implement the "parameter" in which the user can select an artist.)
+
 After clicking the "find out" button on the greeting page, the user will be presented some options to set "parameters" for a 10 question quiz (note, they are not required to fill out any "parameters" they don't want to). Some ideas for the "parameters" a user can set are the genre of music they will quizzed on, a specific year in music, a decade of music, and/or the language of music. Alternatively, the user can select to be quizzed on one particular artist or album. 
 
 Also on this page, the user can select the amount of people playing. Once all of these "parameters" are set, the fetch request will be sent to the Spotify API for the desired data. If there is sufficient data to build a full 10 question quiz with different questions for each player, the game will begin when the user presses start. If there is not enough data (given the user chosen "parameters"), the user will be instructed to broaden the scope of their game. (for example, there most likely isnt enough data about German gangster rap from 1973 to build a full, 10 question quiz, let alone multiple quizzes with different answers.)
