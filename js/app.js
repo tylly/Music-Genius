@@ -3,11 +3,18 @@ let findOut = document.getElementById("findOut")
 let input = document.getElementById("artist")
 let url
 let questionContainer = document.getElementById("questionContainer")
+let prompt = document.getElementById('prompt')
 let question = document.getElementById("question")
 let boxOneImg = document.getElementById("boxOneImg")
 let boxTwoImg = document.getElementById("boxTwoImg")
 let boxThreeImg = document.getElementById("boxThreeImg")
 let boxFourImg = document.getElementById("boxFourImg")
+const butA = document.getElementById('boxButA')
+const butB = document.getElementById('boxButB')
+const butC = document.getElementById('boxButC')
+const butD = document.getElementById('boxButD')
+let correctResponse = 0
+
 
 //b6d97def09e924303dab1c829302163b
 //0475e4b7b017bd6c657020d0458d38ac
@@ -18,6 +25,7 @@ findOut.onclick = async (e) => {
     const res = await fetch(url)
     const data = await res.json()
     topAlbums = data.topalbums.album
+    console.log(topAlbums)
     onSuccess()
   } catch (e) {
     console.error(e)
@@ -26,9 +34,13 @@ findOut.onclick = async (e) => {
 
 const onSuccess = async () => {
   findOut.style.display = "none"
+  prompt.style.display = 'none'
   questionContainer.style.display = "flex"
 
   let firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  if (topAlbums[firstRandomSelect].image === false || '') {
+    firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  }
   let firstOpName = topAlbums[firstRandomSelect].name
   let firstOpImg = topAlbums[firstRandomSelect].image[2]["#text"]
   let firstOp = {
@@ -38,6 +50,9 @@ const onSuccess = async () => {
   topAlbums.slice(firstRandomSelect, 1)
 
   let secondRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  if (topAlbums[secondRandomSelect].image === false || '') {
+    secondRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  }
   let secondOpName = topAlbums[secondRandomSelect].name
   let secondOpImg = topAlbums[secondRandomSelect].image[2]["#text"]
   let secondOp = {
@@ -47,6 +62,9 @@ const onSuccess = async () => {
   topAlbums.slice(secondRandomSelect, 1)
 
   let thirdRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  if (topAlbums[thirdRandomSelect].image === false || '') {
+    thirdRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  }
   let thirdOpName = topAlbums[thirdRandomSelect].name
   let thirdOpImg = topAlbums[thirdRandomSelect].image[2]["#text"]
   let thirdOp = {
@@ -56,6 +74,9 @@ const onSuccess = async () => {
   topAlbums.slice(thirdRandomSelect, 1)
 
   let fourthRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  if (topAlbums[fourthRandomSelect].image === false || '') {
+    fourthRandomSelect = Math.floor(Math.random() * topAlbums.length)
+  }
   let fourthOpName = topAlbums[fourthRandomSelect].name
   let fourthOpImg = topAlbums[fourthRandomSelect].image[2]["#text"]
   let fourthOp = {
@@ -69,8 +90,12 @@ const onSuccess = async () => {
   boxThreeImg.setAttribute("src", thirdOp.img)
   boxFourImg.setAttribute("src", fourthOp.img)
 
- 
-  question.innerHTML = await `Which album is "${secondOp.name}"?`
+  console.log(firstOp)
+  console.log(secondOp)
+  console.log(thirdOp)
+  console.log(fourthOp)
+
+  question.innerHTML = await `Which ${input.value} album is "${secondOp.name}"?`
 }
 
 const newQuestion = () => {}

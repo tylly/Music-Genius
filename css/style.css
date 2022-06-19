@@ -13,7 +13,6 @@ body {
 #top{
     color: goldenrod;
     text-align: center;
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
 }
@@ -66,7 +65,7 @@ body {
   #questionContainer{
       display: none;
       justify-content: space-around;
-      margin-top: 100px;
+      margin-top: 50px;
   }
 
   .boxes {
