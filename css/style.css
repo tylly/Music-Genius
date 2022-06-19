@@ -6,12 +6,16 @@ body {
     background-color: black;
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #top{
     color: goldenrod;
     text-align: center;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 #buttons{
@@ -19,7 +23,7 @@ body {
     justify-content: center;
 }
 
-#homeBut{
+#findOut{
     color: white;
     background-color: transparent;
     text-align: center;
@@ -27,7 +31,7 @@ body {
     border-radius: 50px;
     font-size: 15px;
     padding: 20px 20px 20px 20px;
-    margin-top: 120px;   
+    margin-top: 50px;   
 }
 
 #disclaim{
@@ -37,3 +41,51 @@ body {
     left: 10px;
     font-size: 8px;
 }
+#artist{
+    color: goldenrod;
+    background-color: transparent;
+    border: 0px;
+    text-align: center;
+    width: 100%;
+    font-size: 32px;
+    font-family: lato;
+}
+
+#artist:focus {
+    outline: none;
+}
+
+#artist:focus::placeholder {
+    color: transparent;
+  }
+  
+  #artist::placeholder {
+    color: goldenrod;
+  }
+
+  #questionContainer{
+      display: none;
+      justify-content: space-around;
+      margin-top: 100px;
+  }
+
+  .boxes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .boxImg {
+      height: 100px;
+      width: 100px;
+      display: flex;
+  }
+  .boxBut {
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    border: 1px solid goldenrod;
+    border-radius: 50px;
+    font-size: 15px;
+    padding: 20px 20px 20px 20px;
+    margin-top: 50px; 
+  }
