@@ -1,28 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 
 body {
-    font-family: lato;
-    /* background-image: url("css/carti.jpg"); */
-    background-color: black;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
+  font-family: lato;
+  /* background-image: url("css/carti.jpg"); */
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
 }
 
-#top{
-    color: goldenrod;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+#top {
+  color: goldenrod;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
-#buttons{
-    display: flex;
-    justify-content: center;
+#buttons {
+  display: flex;
+  justify-content: center;
 }
 
-#findOut{
+#findOut {
+  color: white;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid goldenrod;
+  border-radius: 50px;
+  font-size: 15px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 50px;
+}
+
+#count {
+    display: none;
+}
+
+#startOver {
     color: white;
     background-color: transparent;
     text-align: center;
@@ -30,61 +45,79 @@ body {
     border-radius: 50px;
     font-size: 15px;
     padding: 20px 20px 20px 20px;
-    margin-top: 50px;   
+    margin-top: 50px;
+    display: none;
 }
 
-#disclaim{
-    color: goldenrod;
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    font-size: 8px;
+#disclaim {
+  color: goldenrod;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  font-size: 8px;
 }
-#artist{
-    color: goldenrod;
-    background-color: transparent;
-    border: 0px;
-    text-align: center;
-    width: 100%;
-    font-size: 32px;
-    font-family: lato;
+#score {
+  color: goldenrod;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  font-size: 15px;
+  display: none;
+}
+
+#artist {
+  color: goldenrod;
+  background-color: transparent;
+  border: 0px;
+  text-align: center;
+  width: 100%;
+  font-size: 32px;
+  font-family: lato;
 }
 
 #artist:focus {
-    outline: none;
+  outline: none;
 }
 
 #artist:focus::placeholder {
-    color: transparent;
-  }
-  
-  #artist::placeholder {
-    color: goldenrod;
-  }
+  color: transparent;
+}
 
-  #questionContainer{
-      display: none;
-      justify-content: space-around;
-      margin-top: 50px;
-  }
+#artist::placeholder {
+  color: goldenrod;
+}
 
-  .boxes {
-    display: flex;
-    flex-direction: column;
-  }
+#questionContainer {
+  display: none;
+  justify-content: space-around;
+  margin-top: 50px;
+}
 
-  .boxImg {
-      height: 100px;
-      width: 100px;
-      display: flex;
-  }
-  .boxBut {
-    color: white;
-    background-color: transparent;
-    text-align: center;
-    border: 1px solid goldenrod;
-    border-radius: 50px;
-    font-size: 15px;
-    padding: 20px 20px 20px 20px;
-    margin-top: 50px; 
-  }
+.boxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.boxImg {
+  height: 100px;
+  width: 100px;
+  display: flex;
+}
+.boxBut {
+  color: white;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid goldenrod;
+  border-radius: 50px;
+  font-size: 15px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 50px;
+}
+
+.boxBut:hover {
+    border: 1px solid #39FF14;
+}
+
+.boxBut:active {
+    color: red;
+}

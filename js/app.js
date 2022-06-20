@@ -1,26 +1,30 @@
 let topAlbums = []
-let findOut = document.getElementById("findOut")
+const findOut = document.getElementById("findOut")
+const startOver = document.getElementById("startOver")
+let head = document.getElementById("head")
 let input = document.getElementById("artist")
 let url
 let questionContainer = document.getElementById("questionContainer")
-let prompt = document.getElementById('prompt')
+let prompt = document.getElementById("prompt")
 let question = document.getElementById("question")
 let boxOneImg = document.getElementById("boxOneImg")
 let boxTwoImg = document.getElementById("boxTwoImg")
 let boxThreeImg = document.getElementById("boxThreeImg")
 let boxFourImg = document.getElementById("boxFourImg")
-const butA = document.getElementById('boxButA')
-const butB = document.getElementById('boxButB')
-const butC = document.getElementById('boxButC')
-const butD = document.getElementById('boxButD')
-let correctResponse = 0
-
+const butA = document.getElementById("boxButA")
+const butB = document.getElementById("boxButB")
+const butC = document.getElementById("boxButC")
+const butD = document.getElementById("boxButD")
+let scoreDisplay = document.getElementById("score")
+let turn = 1
+let actualScore = 0
+let correctResponse = []
 
 //b6d97def09e924303dab1c829302163b
 //0475e4b7b017bd6c657020d0458d38ac
 
 findOut.onclick = async (e) => {
-  url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json`
+  url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=20`
   try {
     const res = await fetch(url)
     const data = await res.json()
@@ -34,72 +38,94 @@ findOut.onclick = async (e) => {
 
 const onSuccess = async () => {
   findOut.style.display = "none"
-  prompt.style.display = 'none'
+  //prompt.style.display = "none"
   questionContainer.style.display = "flex"
+  scoreDisplay.style.display = "flex"
+
+  if (turn === 6){
+    questionContainer.style.display = "none"
+    question.style.display = "none"
+    prompt.innerHTML = `All done! You answered ${actualScore} out of 5 correctly.`
+    startOver.style.display = 'flex'
+    scoreDisplay.style.display = "none"
+    // startOver.onclick = () => {
+    //   newGame()
+    // }
+  }
 
   let firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  if (topAlbums[firstRandomSelect].image === false || '') {
-    firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  }
-  let firstOpName = topAlbums[firstRandomSelect].name
-  let firstOpImg = topAlbums[firstRandomSelect].image[2]["#text"]
   let firstOp = {
-    name: firstOpName,
-    img: firstOpImg,
+    name: topAlbums[firstRandomSelect].name,
+    img: topAlbums[firstRandomSelect].image[2]["#text"],
   }
-  topAlbums.slice(firstRandomSelect, 1)
+  topAlbums.splice(firstRandomSelect, 1)
 
   let secondRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  if (topAlbums[secondRandomSelect].image === false || '') {
-    secondRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  }
-  let secondOpName = topAlbums[secondRandomSelect].name
-  let secondOpImg = topAlbums[secondRandomSelect].image[2]["#text"]
   let secondOp = {
-    name: secondOpName,
-    img: secondOpImg,
+    name: topAlbums[secondRandomSelect].name,
+    img: topAlbums[secondRandomSelect].image[2]["#text"],
   }
-  topAlbums.slice(secondRandomSelect, 1)
+  topAlbums.splice(secondRandomSelect, 1)
 
   let thirdRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  if (topAlbums[thirdRandomSelect].image === false || '') {
-    thirdRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  }
-  let thirdOpName = topAlbums[thirdRandomSelect].name
-  let thirdOpImg = topAlbums[thirdRandomSelect].image[2]["#text"]
   let thirdOp = {
-    name: thirdOpName,
-    img: thirdOpImg,
+    name: topAlbums[thirdRandomSelect].name,
+    img: topAlbums[thirdRandomSelect].image[2]["#text"],
   }
-  topAlbums.slice(thirdRandomSelect, 1)
+  topAlbums.splice(thirdRandomSelect, 1)
 
   let fourthRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  if (topAlbums[fourthRandomSelect].image === false || '') {
-    fourthRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  }
-  let fourthOpName = topAlbums[fourthRandomSelect].name
-  let fourthOpImg = topAlbums[fourthRandomSelect].image[2]["#text"]
   let fourthOp = {
-    name: fourthOpName,
-    img: fourthOpImg,
+    name: topAlbums[fourthRandomSelect].name,
+    img: topAlbums[fourthRandomSelect].image[2]["#text"],
   }
-  topAlbums.slice(fourthRandomSelect, 1)
+  topAlbums.splice(fourthRandomSelect, 1)
 
   boxOneImg.setAttribute("src", firstOp.img)
   boxTwoImg.setAttribute("src", secondOp.img)
   boxThreeImg.setAttribute("src", thirdOp.img)
   boxFourImg.setAttribute("src", fourthOp.img)
+  console.log(topAlbums)
 
-  console.log(firstOp)
-  console.log(secondOp)
-  console.log(thirdOp)
-  console.log(fourthOp)
+  let answerChoices = [
+    [firstOp, butA],
+    [secondOp, butB],
+    [thirdOp, butC],
+    [fourthOp, butD],
+  ]
 
-  question.innerHTML = await `Which ${input.value} album is "${secondOp.name}"?`
+  let correctIndex = Math.floor(Math.random() * answerChoices.length)
+  let incorrectIndex
+  incorrectIndex !== correctIndex
+
+  question.innerHTML = `Which ${input.value} album is "${answerChoices[correctIndex][0].name}"?`
+
+  answerChoices[correctIndex][1].onclick = () => {
+    actualScore++
+    turn++
+    scoreDisplay.innerHTML = `Question ${turn} Score ${actualScore}/5`
+    onSuccess()
+  }
+  for (let i = 0; i < answerChoices.length; i++) {
+    if (i !== correctIndex) {
+      answerChoices[i][1].onclick = () => {
+        turn++
+        scoreDisplay.innerHTML = `Question ${turn} Score ${actualScore}/5`
+        onSuccess()
+      }
+    }
+  }
 }
 
-const newQuestion = () => {}
-
+const newGame = () => {
+  questionContainer.style.display = "flex"
+  question.style.display = "flex"
+  input.value = ''
+  prompt.innerHTML = `What do you know about ${input.value}?`
+  startOver.style.display = 'none'
+  scoreDisplay.style.display = "flex"
+  
+}
 // fetch(url)
 // .then(res => {
 //     res.json()
