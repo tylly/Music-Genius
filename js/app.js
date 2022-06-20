@@ -42,15 +42,15 @@ const onSuccess = async () => {
   questionContainer.style.display = "flex"
   scoreDisplay.style.display = "flex"
 
-  if (turn === 6){
+  if (turn === 6) {
     questionContainer.style.display = "none"
     question.style.display = "none"
     prompt.innerHTML = `All done! You answered ${actualScore} out of 5 correctly.`
-    startOver.style.display = 'flex'
+    startOver.style.display = "flex"
     scoreDisplay.style.display = "none"
-    // startOver.onclick = () => {
-    //   newGame()
-    // }
+    startOver.onclick = () => {
+      location.reload()
+    }
   }
 
   let firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
@@ -117,15 +117,6 @@ const onSuccess = async () => {
   }
 }
 
-const newGame = () => {
-  questionContainer.style.display = "flex"
-  question.style.display = "flex"
-  input.value = ''
-  prompt.innerHTML = `What do you know about ${input.value}?`
-  startOver.style.display = 'none'
-  scoreDisplay.style.display = "flex"
-  
-}
 // fetch(url)
 // .then(res => {
 //     res.json()
