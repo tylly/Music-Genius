@@ -1,4 +1,5 @@
 let topAlbums = []
+let getTracklist = []
 const findOut = document.getElementById("findOut")
 const startOver = document.getElementById("startOver")
 let head = document.getElementById("head")
@@ -24,11 +25,17 @@ let correctResponse = []
 //0475e4b7b017bd6c657020d0458d38ac
 
 findOut.onclick = async (e) => {
-  url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=20`
+  url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=50`
   try {
     const res = await fetch(url)
     const data = await res.json()
     topAlbums = data.topalbums.album
+    for (let i = 0; i < topAlbums.length; i++){
+      if (topAlbums[i].image[2] === false || undefined || null || ''){
+        topAlbums.splice(i, 1)
+      }
+    }
+
     console.log(topAlbums)
     onSuccess()
   } catch (e) {
@@ -36,21 +43,31 @@ findOut.onclick = async (e) => {
   }
 }
 
-const onSuccess = async () => {
+const onSuccess = () => {
   findOut.style.display = "none"
-  //prompt.style.display = "none"
+  prompt.style.display = "none"
   questionContainer.style.display = "flex"
   scoreDisplay.style.display = "flex"
 
   if (turn === 6) {
     questionContainer.style.display = "none"
     question.style.display = "none"
-    prompt.innerHTML = `All done! You answered ${actualScore} out of 5 correctly.`
+    if(actualScore === 0){
+      prompt.textContent = `WEAK! You answered ${actualScore} out of 5 correctly.`
+    }else if(actualScore <= 3){
+      prompt.textContent = `Meh, you aren't core. You answered ${actualScore} out of 5 correctly.`
+    }else if(actualScore === 4){
+      prompt.textContent = `Nice! You answered ${actualScore} out of 5 correctly.`
+    }else{
+      prompt.textContent = `Do you manage ${input.value}? You answered ${actualScore} out of 5 correctly.`
+    }
+    prompt.style.display = "block"
     startOver.style.display = "flex"
     scoreDisplay.style.display = "none"
     startOver.onclick = () => {
       location.reload()
     }
+    
   }
 
   let firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
@@ -85,7 +102,7 @@ const onSuccess = async () => {
   boxTwoImg.setAttribute("src", secondOp.img)
   boxThreeImg.setAttribute("src", thirdOp.img)
   boxFourImg.setAttribute("src", fourthOp.img)
-  console.log(topAlbums)
+  
 
   let answerChoices = [
     [firstOp, butA],
@@ -95,22 +112,27 @@ const onSuccess = async () => {
   ]
 
   let correctIndex = Math.floor(Math.random() * answerChoices.length)
-  let incorrectIndex
-  incorrectIndex !== correctIndex
+  question.textContent = `Which ${input.value} album is "${answerChoices[correctIndex][0].name}"?`
 
-  question.innerHTML = `Which ${input.value} album is "${answerChoices[correctIndex][0].name}"?`
+  for (let i = 0; i < answerChoices.length; i++){
+    if (answerChoices[i] !== answerChoices[correctIndex]){
+      topAlbums.push(answerChoices[i][0])
+    }
+  }
+  console.log(topAlbums)
 
   answerChoices[correctIndex][1].onclick = () => {
     actualScore++
     turn++
-    scoreDisplay.innerHTML = `Question ${turn} Score ${actualScore}/5`
+    scoreDisplay.textContent = `Question ${turn} Score ${actualScore}/5`
     onSuccess()
   }
+
   for (let i = 0; i < answerChoices.length; i++) {
     if (i !== correctIndex) {
       answerChoices[i][1].onclick = () => {
         turn++
-        scoreDisplay.innerHTML = `Question ${turn} Score ${actualScore}/5`
+        scoreDisplay.textContent = `Question ${turn} Score ${actualScore}/5`
         onSuccess()
       }
     }
