@@ -31,12 +31,13 @@ findOut.onclick = async (e) => {
     const data = await res.json()
     topAlbums = data.topalbums.album
     for (let i = 0; i < topAlbums.length; i++){
-      if (topAlbums[i].image[2] === false || undefined || null || ''){
+      if (topAlbums[i].image[2]['#text'] === false || undefined || null || ''){
         topAlbums.splice(i, 1)
       }
     }
-
     console.log(topAlbums)
+
+    //console.log(topAlbums)
     onSuccess()
   } catch (e) {
     console.error(e)
@@ -71,37 +72,25 @@ const onSuccess = () => {
   }
 
   let firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let firstOp = {
-    name: topAlbums[firstRandomSelect].name,
-    img: topAlbums[firstRandomSelect].image[2]["#text"],
-  }
+  let firstOp = topAlbums[firstRandomSelect]
   topAlbums.splice(firstRandomSelect, 1)
 
   let secondRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let secondOp = {
-    name: topAlbums[secondRandomSelect].name,
-    img: topAlbums[secondRandomSelect].image[2]["#text"],
-  }
+  let secondOp = topAlbums[secondRandomSelect]
   topAlbums.splice(secondRandomSelect, 1)
 
   let thirdRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let thirdOp = {
-    name: topAlbums[thirdRandomSelect].name,
-    img: topAlbums[thirdRandomSelect].image[2]["#text"],
-  }
+  let thirdOp = topAlbums[thirdRandomSelect]
   topAlbums.splice(thirdRandomSelect, 1)
 
   let fourthRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let fourthOp = {
-    name: topAlbums[fourthRandomSelect].name,
-    img: topAlbums[fourthRandomSelect].image[2]["#text"],
-  }
+  let fourthOp = topAlbums[fourthRandomSelect]
   topAlbums.splice(fourthRandomSelect, 1)
 
-  boxOneImg.setAttribute("src", firstOp.img)
-  boxTwoImg.setAttribute("src", secondOp.img)
-  boxThreeImg.setAttribute("src", thirdOp.img)
-  boxFourImg.setAttribute("src", fourthOp.img)
+  boxOneImg.setAttribute("src", firstOp.image[2]["#text"])
+  boxTwoImg.setAttribute("src", secondOp.image[2]["#text"])
+  boxThreeImg.setAttribute("src", thirdOp.image[2]["#text"])
+  boxFourImg.setAttribute("src", fourthOp.image[2]["#text"])
   
 
   let answerChoices = [
