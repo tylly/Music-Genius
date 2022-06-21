@@ -30,14 +30,13 @@ findOut.onclick = async (e) => {
     const res = await fetch(url)
     const data = await res.json()
     topAlbums = data.topalbums.album
-    for (let i = 0; i < topAlbums.length; i++){
-      if (topAlbums[i].image[2]['#text'] === false || undefined || null || ''){
+    for (let i = 0; i < topAlbums.length; i++) {
+      if (topAlbums[i].image[2]["#text"] === false || undefined || null || "") {
         topAlbums.splice(i, 1)
       }
     }
     console.log(topAlbums)
 
-    //console.log(topAlbums)
     onSuccess()
   } catch (e) {
     console.error(e)
@@ -53,13 +52,13 @@ const onSuccess = () => {
   if (turn === 6) {
     questionContainer.style.display = "none"
     question.style.display = "none"
-    if(actualScore === 0){
+    if (actualScore === 0) {
       prompt.textContent = `WEAK! You answered ${actualScore} out of 5 correctly.`
-    }else if(actualScore <= 3){
+    } else if (actualScore <= 3) {
       prompt.textContent = `Meh, you aren't core. You answered ${actualScore} out of 5 correctly.`
-    }else if(actualScore === 4){
+    } else if (actualScore === 4) {
       prompt.textContent = `Nice! You answered ${actualScore} out of 5 correctly.`
-    }else{
+    } else {
       prompt.textContent = `Do you manage ${input.value}? You answered ${actualScore} out of 5 correctly.`
     }
     prompt.style.display = "block"
@@ -68,7 +67,6 @@ const onSuccess = () => {
     startOver.onclick = () => {
       location.reload()
     }
-    
   }
 
   let firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
@@ -91,7 +89,6 @@ const onSuccess = () => {
   boxTwoImg.setAttribute("src", secondOp.image[2]["#text"])
   boxThreeImg.setAttribute("src", thirdOp.image[2]["#text"])
   boxFourImg.setAttribute("src", fourthOp.image[2]["#text"])
-  
 
   let answerChoices = [
     [firstOp, butA],
@@ -103,8 +100,8 @@ const onSuccess = () => {
   let correctIndex = Math.floor(Math.random() * answerChoices.length)
   question.textContent = `Which ${input.value} album is "${answerChoices[correctIndex][0].name}"?`
 
-  for (let i = 0; i < answerChoices.length; i++){
-    if (answerChoices[i] !== answerChoices[correctIndex]){
+  for (let i = 0; i < answerChoices.length; i++) {
+    if (answerChoices[i] !== answerChoices[correctIndex]) {
       topAlbums.push(answerChoices[i][0])
     }
   }
