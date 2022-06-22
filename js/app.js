@@ -9,7 +9,7 @@ findOut.onclick = async (e) => {
   try {
     const res = await fetch(url)
     const data = await res.json()
-    
+
     //This filter method gets rid of any array elements that dont have image urls.
     topAlbums = data.topalbums.album.filter((hasImage) => {
       return hasImage.image[2]["#text"].startsWith("https")
@@ -83,7 +83,6 @@ const onSuccess = () => {
   boxThreeImg.setAttribute("src", thirdOp.image[2]["#text"])
   boxFourImg.setAttribute("src", fourthOp.image[2]["#text"])
 
-
   //Create the answer choices array, grouping together the selected topAlbums indexes with buttons
   let answerChoices = [
     [firstOp, butA],
@@ -111,7 +110,7 @@ const onSuccess = () => {
     scoreDisplay.textContent = `Question ${turn} Score ${actualScore}/5`
     onSuccess()
   }
-//If a button corresponding to an incorrect answer is clicked, the turn is incremented, the score is updated and onSuccess runs again
+  //If a button corresponding to an incorrect answer is clicked, the turn is incremented, the score is updated and onSuccess runs again
   for (let i = 0; i < answerChoices.length; i++) {
     if (i !== correctIndex) {
       answerChoices[i][1].onclick = () => {
@@ -122,4 +121,3 @@ const onSuccess = () => {
     }
   }
 }
-

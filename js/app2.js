@@ -63,7 +63,7 @@ onSuccessGenre = () => {
     return
   }
 
-  //These next blocks randomly choose 4 items out of the topAlbums array to eventually be used as answer choices.
+  //These next blocks randomly choose 4 items out of the topAlbumsGenre array to eventually be used as answer choices.
   //As indexes are chosen, they are spliced out of the array so these indexes can't be chosen more than once. Options that aren't
   //used as the correct answer are later pushed back into the topAlbums array so they can be used again. I could have just assigned
   //the Op variables the spliced elements directly, but the syntax gets hard to follow later in the code with this method. Using the randomSelect
