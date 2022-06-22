@@ -39,7 +39,7 @@ onSuccessGenre = () => {
   scoreDisplay.style.display = "flex"
 
   //This block ends the game after the user has had 5 turns, displaying their results and offering a start over option
-  //It also returns out of the onSuccess function so the unecessary code doesn't run
+  //It also returns out of the onSuccessGenre function so the unecessary code doesn't run
   if (turn === 6) {
     questionContainer.style.display = "none"
     question.style.display = "none"
@@ -70,7 +70,6 @@ onSuccessGenre = () => {
   let firstRandomSelect = Math.floor(Math.random() * topAlbumsGenre.length)
   let firstOp = topAlbumsGenre[firstRandomSelect]
   topAlbumsGenre.splice(firstRandomSelect, 1)
-  console.log(firstOp)
 
   let secondRandomSelect = Math.floor(Math.random() * topAlbumsGenre.length)
   let secondOp = topAlbumsGenre[secondRandomSelect]
@@ -103,8 +102,6 @@ onSuccessGenre = () => {
   question.textContent = `Whose album is this?`
   let correctImage = answerChoices[correctIndex][0].image[2]["#text"]
   genreImage.setAttribute("src", correctImage)
-
-  console.log(correctImage)
 
   //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions
   for (let i = 0; i < answerChoices.length; i++) {
