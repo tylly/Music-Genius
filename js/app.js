@@ -25,12 +25,12 @@ let correctResponse = []
 //0475e4b7b017bd6c657020d0458d38ac
 
 findOut.onclick = async (e) => {
-  url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=30`
+  url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=50`
   try {
     const res = await fetch(url)
     const data = await res.json()
     topAlbums = data.topalbums.album.filter((hasImage) => {
-      return hasImage.image[2]["#text"].startsWith("https")
+       return hasImage.image[2]["#text"].startsWith('https')
     })
 
     console.log(topAlbums)
