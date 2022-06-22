@@ -15,6 +15,7 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 #head {
@@ -22,12 +23,16 @@ body {
   text-decoration-color: goldenrod;
 }
 
+#or {
+  margin: 0px 0px 0px;
+}
+
 #buttons {
   display: flex;
   justify-content: center;
 }
 
-#findOut {
+#findOutArtist {
   color: goldenrod;
   background-color: transparent;
   text-align: center;
@@ -38,12 +43,37 @@ body {
   margin-top: 50px;
 }
 
-#findOut:hover {
+#findOutArtist:hover {
   border: 1px solid goldenrod;
+}
+
+#findOutArtist:active {
+  color: teal;
+}
+
+#findOutGenre {
+  color: goldenrod;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid teal;
+  border-radius: 50px;
+  font-size: 15px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 50px;
+}
+
+#findOutGenre:hover {
+  border: 1px solid goldenrod;
+}
+
+#findOutGenre:active {
+  color: teal;
 }
 
 #count {
     display: none;
+    text-decoration: underline;
+    text-decoration-color: goldenrod;
 }
 
 #startOver {
@@ -58,12 +88,23 @@ body {
     display: none;
 }
 
+#startOver:hover {
+  border: 1px solid goldenrod;
+  color: goldenrod
+}
+
+#startOver:active {
+  color: teal;
+}
+
 #disclaim {
   color: teal;
   position: absolute;
   bottom: 0;
   left: 10px;
   font-size: 8px;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
 }
 #score {
   color: teal;
@@ -72,6 +113,8 @@ body {
   right: 10px;
   font-size: 15px;
   display: none;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
 }
 
 #artist {
@@ -82,7 +125,10 @@ body {
   width: 100%;
   font-size: 32px;
   font-family: lato;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
 }
+
 
 #artist:focus {
   outline: none;
@@ -94,6 +140,40 @@ body {
 
 #artist::placeholder {
   color: teal;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
+}
+
+#genre {
+  color: teal;
+  background-color: transparent;
+  border: 0px;
+  text-align: center;
+  width: 100%;
+  font-size: 32px;
+  font-family: lato;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
+}
+
+#genre:focus {
+  outline: none;
+}
+
+#genre:focus::placeholder {
+  color: transparent;
+}
+
+#genre::placeholder {
+  color: teal;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
+}
+
+#question {
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
+
 }
 
 #questionContainer {
@@ -125,8 +205,31 @@ body {
 
 .boxBut:hover {
     border: 1px solid goldenrod;
+    color: goldenrod;
 }
 
 .boxBut:active {
-    color: red;
+    color: teal;
+}
+
+#prompt {
+  margin: 0px 0px 0px 0px;
+  margin-top: 20px;
+}
+
+#prompt2 {
+  margin: 0px 0px 0px 0px;
+}
+
+#q {
+  display: flex;
+  justify-content: center;
+}
+
+#question {
+  display: none;
+  text-align: center;
+  color: teal;
+  margin-left: auto;
+  margin-right: auto;
 }

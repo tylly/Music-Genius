@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/app.js" defer></script>
+    <script src="js/app2.js" defer></script>
   </head>
   <body>
     <div id="top">
-      <h1 id="head">ALBUM QUIZ</h1>
+      <h1 id="head">MUSIC QUIZ</h1>
       <h1 id="prompt">
         What do you know about
         <input
@@ -22,13 +23,28 @@
           autocomplete="off"
         />?
       </h1>
+      <h1 id="or">or</h1>
+      <h1 id="prompt2">
+        What do you know about
+        <input
+          type="text"
+          id="genre"
+          placeholder="[genre]"
+          autocomplete="off"
+        />?
+      </h1>
       <h1 id="question"></h1>
     </div>
     <div id="buttons">
-      <button type="button" id="findOut">Find Out</button>
+      <button type="button" id="findOutArtist">Find Out Artist</button>
+      <button type="button" id="findOutGenre">Find Out Genre</button>
       <button type="button" id="startOver">Start Over</button>
     </div>
+    <div id="genre">
+      <img id="genreImage" src="" />
+    </div>
     <div id="questionContainer">
+
       <div id="boxOne" class="boxes">
         <img class="boxImg" id="boxOneImg" src="" />
         <button type="button" class="boxBut" id="boxButA">A</button>
