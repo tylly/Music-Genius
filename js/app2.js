@@ -2,7 +2,8 @@
 //b6d97def09e924303dab1c829302163b
 //0475e4b7b017bd6c657020d0458d38ac
 
-//Here, the user is electing to play the game with a Genre.
+//Here, the user is electing to play the game with a genre. A fetch request is sent
+//using LastFM's get top albums from a genre method, which is reflected in the link.
 finOutGenre.onclick = async (e) => {
   url = `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${inputGenre.value}&api_key=b6d97def09e924303dab1c829302163b&format=json`
   try {
