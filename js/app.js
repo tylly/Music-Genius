@@ -1,7 +1,6 @@
-//Here we declare gobal variables for use in all js files and DOM selectors
+//Here we declare gobal variables and DOM selectors for use in all js files.
 let topAlbums = []
 let topAlbumsGenre = []
-let getTracklist = []
 const findOut = document.getElementById("findOutArtist")
 const finOutGenre = document.getElementById("findOutGenre")
 const startOver = document.getElementById("startOver")
