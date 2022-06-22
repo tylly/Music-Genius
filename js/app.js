@@ -1,25 +1,29 @@
 let topAlbums = []
 let getTracklist = []
-const findOut = document.getElementById("findOut")
+const findOut = document.getElementById("findOutArtist")
+const finOutGenre = document.getElementById("findOutGenre")
 const startOver = document.getElementById("startOver")
 let head = document.getElementById("head")
 let input = document.getElementById("artist")
+let inputGenre = document.getElementById("genre")
 let url
 let questionContainer = document.getElementById("questionContainer")
 let prompt = document.getElementById("prompt")
+let prompt2 = document.getElementById('prompt2')
+const or = document.getElementById("or")
 let question = document.getElementById("question")
 let boxOneImg = document.getElementById("boxOneImg")
 let boxTwoImg = document.getElementById("boxTwoImg")
 let boxThreeImg = document.getElementById("boxThreeImg")
 let boxFourImg = document.getElementById("boxFourImg")
-const butA = document.getElementById("boxButA")
-const butB = document.getElementById("boxButB")
-const butC = document.getElementById("boxButC")
-const butD = document.getElementById("boxButD")
+let boxBut = document.getElementsByClassName("boxBut")
+let butA = document.getElementById("boxButA")
+let butB = document.getElementById("boxButB")
+let butC = document.getElementById("boxButC")
+let butD = document.getElementById("boxButD")
 let scoreDisplay = document.getElementById("score")
 let turn = 1
 let actualScore = 0
-let correctResponse = []
 
 //b6d97def09e924303dab1c829302163b
 //0475e4b7b017bd6c657020d0458d38ac
@@ -43,9 +47,13 @@ findOut.onclick = async (e) => {
 
 const onSuccess = () => {
   findOut.style.display = "none"
+  finOutGenre.style.display = "none"
   prompt.style.display = "none"
+  prompt2.style.display = "none"
+  or.style.display = "none"
   questionContainer.style.display = "flex"
   scoreDisplay.style.display = "flex"
+  
 
   if (turn === 6) {
     questionContainer.style.display = "none"
