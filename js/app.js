@@ -1,7 +1,3 @@
-//These are two valid API keys for the LastFM API. I requested two in case I accidentally exceed their usuage limits outlined in their documentation
-//b6d97def09e924303dab1c829302163b
-//0475e4b7b017bd6c657020d0458d38ac
-
 //Here, the user is electing to play the game with artists. The functionality for the Genre game is in app2.js. A fetch request is sent
 //using LastFM's get top albums from an artist method, which is reflected in the link.
 findOut.onclick = async (e) => {
@@ -11,14 +7,33 @@ findOut.onclick = async (e) => {
     const data = await res.json()
 
     //This filter method gets rid of any array elements that dont have image urls.
-    topAlbums = data.topalbums.album.filter((hasImage) => {
+    almostTopAlbums = data.topalbums.album.filter((hasImage) => {
       return hasImage.image[2]["#text"].startsWith("https")
     })
+    
+    //This filter gets rid of multiple versions of the same album. 
+    //For example, Tha Carter III and Tha Carter III (super ultra mega extended remastered explicit)
+    topAlbums = almostTopAlbums.filter((noRepeate) => {
+      if (noRepeate.name.includes("(")) {
+        return false
+      } else {
+        return true
+      }
+    })
+    console.log(topAlbums)
+    
     //Once the data is succesfully received and filtered, the game starts with the onSuccess function
+    timeCount = 16
     onSuccess()
+    setInterval(startTimer, 1000)
   } catch (e) {
     console.error(e)
   }
+}
+
+const startTimer = () => {
+  timeCount--
+  timer.textContent = `${timeCount}`
 }
 
 const onSuccess = () => {

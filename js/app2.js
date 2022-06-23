@@ -1,31 +1,29 @@
-//Relisting the API keys for ease of access
-//b6d97def09e924303dab1c829302163b
-//0475e4b7b017bd6c657020d0458d38ac
-
 //Here, the user is electing to play the game with a genre. A fetch request is sent
 //using LastFM's get top albums from a genre method, which is reflected in the link.
 finOutGenre.onclick = async (e) => {
-  url = `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${inputGenre.value}&api_key=b6d97def09e924303dab1c829302163b&format=json`
-  try {
-    const res = await fetch(url)
-    const data = await res.json()
+  if (inputGenre.value) {
+    url = `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${inputGenre.value}&api_key=b6d97def09e924303dab1c829302163b&format=json`
+    try {
+      const res = await fetch(url)
+      const data = await res.json()
 
-    //This filter method gets rid of any array elements that dont have image urls. This is less common with LastFM's get genre top albums fetch method,
-    //but just in case, it will save headaches.
-    topAlbumsGenre = data.albums.album.filter((hasImage) => {
-      return hasImage.image[2]["#text"].startsWith("https")
-    })
-    console.log(topAlbumsGenre)
+      //This filter method gets rid of any array elements that dont have image urls. This is less common with LastFM's get genre top albums fetch method,
+      //but just in case, it will save headaches.
+      topAlbumsGenre = data.albums.album.filter((hasImage) => {
+        return hasImage.image[2]["#text"].startsWith("https")
+      })
+      console.log(topAlbumsGenre)
 
-    onSuccessGenre()
-  } catch (e) {
-    console.error(e)
+      onSuccessGenre()
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
-
 onSuccessGenre = () => {
   //Here, we get rid of the original prompts and display the question container. Note difference between what is displayed/not displayed
   //here and with the Onsuccess function in app.js
+  boxBut.style.width = 'auto'
   findOut.style.display = "none"
   finOutGenre.style.display = "none"
   prompt.style.display = "none"

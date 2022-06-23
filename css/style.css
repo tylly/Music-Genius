@@ -24,7 +24,7 @@ body {
 }
 
 #or {
-  margin: 0px 0px 0px;
+  text-decoration: underline;
 }
 
 #buttons {
@@ -40,7 +40,10 @@ body {
   border-radius: 50px;
   font-size: 15px;
   padding: 20px 20px 20px 20px;
-  margin-top: 50px;
+  margin-top: 15px;
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #findOutArtist:hover {
@@ -59,7 +62,7 @@ body {
   border-radius: 50px;
   font-size: 15px;
   padding: 20px 20px 20px 20px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 #findOutGenre:hover {
@@ -70,27 +73,41 @@ body {
   color: teal;
 }
 
+#onOff {
+  color: goldenrod;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid teal;
+  border-radius: 50px;
+  font-size: 15px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 0px;
+  max-width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #count {
-    display: none;
-    text-decoration: underline;
-    text-decoration-color: goldenrod;
+  display: none;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
 }
 
 #startOver {
-    color: white;
-    background-color: transparent;
-    text-align: center;
-    border: 1px solid teal;
-    border-radius: 50px;
-    font-size: 15px;
-    padding: 20px 20px 20px 20px;
-    margin-top: 50px;
-    display: none;
+  color: white;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid teal;
+  border-radius: 50px;
+  font-size: 15px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 50px;
+  display: none;
 }
 
 #startOver:hover {
   border: 1px solid goldenrod;
-  color: goldenrod
+  color: goldenrod;
 }
 
 #startOver:active {
@@ -106,6 +123,17 @@ body {
   text-decoration: underline;
   text-decoration-color: goldenrod;
 }
+
+#timer {
+  color: teal;
+  position: absolute;
+  width: 100%;
+  margin-left: 48.5%;
+  font-size: 50px;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
+}
+
 #score {
   color: teal;
   position: absolute;
@@ -128,7 +156,6 @@ body {
   text-decoration: underline;
   text-decoration-color: goldenrod;
 }
-
 
 #artist:focus {
   outline: none;
@@ -173,7 +200,6 @@ body {
 #question {
   text-decoration: underline;
   text-decoration-color: goldenrod;
-
 }
 
 #questionContainer {
@@ -204,12 +230,12 @@ body {
 }
 
 .boxBut:hover {
-    border: 1px solid goldenrod;
-    color: goldenrod;
+  border: 1px solid goldenrod;
+  color: goldenrod;
 }
 
 .boxBut:active {
-    color: teal;
+  color: teal;
 }
 
 #prompt {
