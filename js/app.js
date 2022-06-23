@@ -78,33 +78,13 @@ const onSuccess = () => {
     gameOver()
   }
 
-  //These next blocks randomly choose 4 items out of the topAlbums array to eventually be used as answer choices.
+  //These next lines randomly choose 4 items out of the topAlbums array to eventually be used as answer choices.
   //As they are chosen, they are spliced out of the array so they can't be chosen more than once. Options that aren't
-  //used as the correct answer are later pushed back into the topAlbums array so they can be used again. I could have just assigned
-  //the Op variables the spliced elements directly, but the syntax gets hard to follow later in the code with this method. Using the randomSelect
-  //variables makes the code more readable
-
-  let firstRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let firstOp = topAlbums[firstRandomSelect]
-  topAlbums.splice(firstRandomSelect, 1)
-
-  let secondRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let secondOp = topAlbums[secondRandomSelect]
-  topAlbums.splice(secondRandomSelect, 1)
-
-  let thirdRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let thirdOp = topAlbums[thirdRandomSelect]
-  topAlbums.splice(thirdRandomSelect, 1)
-
-  let fourthRandomSelect = Math.floor(Math.random() * topAlbums.length)
-  let fourthOp = topAlbums[fourthRandomSelect]
-  topAlbums.splice(fourthRandomSelect, 1)
-
-  //Here, the images from the answer choices are displayed in the container
-  boxOneImg.setAttribute("src", firstOp.image[2]["#text"])
-  boxTwoImg.setAttribute("src", secondOp.image[2]["#text"])
-  boxThreeImg.setAttribute("src", thirdOp.image[2]["#text"])
-  boxFourImg.setAttribute("src", fourthOp.image[2]["#text"])
+  //used as the correct answer are later pushed back into the topAlbums array so they can be used again. 
+  let firstOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
+  let secondOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
+  let thirdOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
+  let fourthOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
 
   //Create the answer choices array, grouping together the selected topAlbums indexes with buttons
   let answerChoices = [
@@ -113,18 +93,22 @@ const onSuccess = () => {
     [thirdOp, butC],
     [fourthOp, butD],
   ]
+  //Here, the images from the answer choices are displayed in the container
+  for (let i = 0; i < boxImgArray.length; i++){
+    boxImgArray[i].setAttribute("src", answerChoices[i][0][0].image[2]["#text"])
+  }
 
   //One of the answer choices is chosen as the correct one, and the name of the correct album is interpolated into the question
   let correctIndex = Math.floor(Math.random() * answerChoices.length)
-  question.textContent = `Which ${input.value} album is "${answerChoices[correctIndex][0].name}"?`
+  question.textContent = `Which ${input.value} album is "${answerChoices[correctIndex][0][0].name}"?`
 
   //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions
   for (let i = 0; i < answerChoices.length; i++) {
     if (answerChoices[i] !== answerChoices[correctIndex]) {
-      topAlbums.push(answerChoices[i][0])
+      topAlbums.push(answerChoices[i][0][0])
     }
   }
-
+console.log(topAlbums)
   //If the button corresponding to the correct answer is clicked, the players score is incremented, the turn is incremented, score is updated
   //and onSuccess runs again
   answerChoices[correctIndex][1].onclick = () => {

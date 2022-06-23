@@ -23,7 +23,6 @@ finOutGenre.onclick = async (e) => {
     }
   }
 }
-
 //Once the data is succesfully received and filtered, the game starts with the onSuccessGenre function
 onSuccessGenre = () => {
   //hides home page buttons and prompts
