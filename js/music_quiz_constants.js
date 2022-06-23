@@ -13,14 +13,7 @@ const finOutGenre = document.getElementById("findOutGenre")
 const or = document.getElementById("or")
 const prompt = document.getElementById("prompt")
 const prompt2 = document.getElementById("prompt2")
-const homeArray = [
-    onOff,
-    findOut,
-    finOutGenre,
-    prompt,
-    prompt2,
-    or
-]
+const homeArray = [onOff, findOut, finOutGenre, prompt, prompt2, or]
 const startOver = document.getElementById("startOver")
 const head = document.getElementById("head")
 const input = document.getElementById("artist")
@@ -32,23 +25,13 @@ const boxOneImg = document.getElementById("boxOneImg")
 const boxTwoImg = document.getElementById("boxTwoImg")
 const boxThreeImg = document.getElementById("boxThreeImg")
 const boxFourImg = document.getElementById("boxFourImg")
-const boxImgArray = [
-    boxOneImg,
-    boxTwoImg,
-    boxThreeImg,
-    boxFourImg
-]
+const boxImgArray = [boxOneImg, boxTwoImg, boxThreeImg, boxFourImg]
 const boxBut = document.querySelector(".boxBut")
 const butA = document.getElementById("boxButA")
 const butB = document.getElementById("boxButB")
 const butC = document.getElementById("boxButC")
 const butD = document.getElementById("boxButD")
-const butArray = [
-    butA,
-    butB,
-    butC,
-    butD
-]
+const butArray = [butA, butB, butC, butD]
 
 let turn = 1
 let actualScore = 0
@@ -64,7 +47,7 @@ const change = () => {
     timerTrack--
     onOff.textContent = "Timer: Off"
     onOff.style.background = "transparent"
-  } 
+  }
 }
 
 onOff.onclick = change

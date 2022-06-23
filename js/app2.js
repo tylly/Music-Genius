@@ -72,23 +72,11 @@ onSuccessGenre = () => {
 
   //These next blocks randomly choose 4 items out of the topAlbumsGenre array to eventually be used as answer choices.
   //As indexes are chosen, they are spliced out of the array so these indexes can't be chosen more than once. Options that aren't
-  //used as the correct answer are later pushed back into the topAlbums array so they can be used again. 
-  let firstOp = topAlbumsGenre.splice(
-    Math.floor(Math.random() * topAlbumsGenre.length),
-    1
-  )
-  let secondOp = topAlbumsGenre.splice(
-    Math.floor(Math.random() * topAlbumsGenre.length),
-    1
-  )
-  let thirdOp = topAlbumsGenre.splice(
-    Math.floor(Math.random() * topAlbumsGenre.length),
-    1
-  )
-  let fourthOp = topAlbumsGenre.splice(
-    Math.floor(Math.random() * topAlbumsGenre.length),
-    1
-  )
+  //used as the correct answer are later pushed back into the topAlbums array so they can be used again.
+  let firstOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length), 1)
+  let secondOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length),1)
+  let thirdOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length),1)
+  let fourthOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length),1)
 
   //All of the answer choices are put into an array and grouped with buttons
   let answerChoices = [
@@ -108,14 +96,14 @@ onSuccessGenre = () => {
   let correctImage = answerChoices[correctIndex][0][0].image[2]["#text"]
   genreImage.setAttribute("src", correctImage)
 
-  //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions. 
+  //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions.
   //Becuase they were spliced and are now arrays, the bracket notation pushes just the object and not the whole array
   for (let i = 0; i < answerChoices.length; i++) {
     if (answerChoices[i] !== answerChoices[correctIndex]) {
       topAlbumsGenre.push(answerChoices[i][0][0])
     }
   }
-  
+
   //If the button corresponding to the correct answer is clicked, the players score is incremented, the turn is incremented, score is updated
   //and onSuccessGenre runs again
   answerChoices[correctIndex][1].onclick = () => {

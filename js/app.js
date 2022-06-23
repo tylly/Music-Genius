@@ -81,22 +81,10 @@ const onSuccess = () => {
   //These next lines randomly splice 4 items out of the topAlbums array to eventually be used as answer choices.
   //They are spliced out of the array one by one so they can't be chosen more than once. Options that aren't
   //used as the correct answer are later pushed back into the topAlbums array as objects so they can be used again.
-  let firstOp = topAlbums.splice(
-    Math.floor(Math.random() * topAlbums.length),
-    1
-  )
-  let secondOp = topAlbums.splice(
-    Math.floor(Math.random() * topAlbums.length),
-    1
-  )
-  let thirdOp = topAlbums.splice(
-    Math.floor(Math.random() * topAlbums.length),
-    1
-  )
-  let fourthOp = topAlbums.splice(
-    Math.floor(Math.random() * topAlbums.length),
-    1
-  )
+  let firstOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
+  let secondOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
+  let thirdOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
+  let fourthOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
 
   //Create the answer choices array, grouping together the selected topAlbums elements with buttons
   let answerChoices = [
