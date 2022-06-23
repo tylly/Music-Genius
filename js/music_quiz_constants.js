@@ -9,21 +9,35 @@ const timer = document.getElementById("timer")
 let onOff = document.getElementById("onOff")
 const findOut = document.getElementById("findOutArtist")
 const finOutGenre = document.getElementById("findOutGenre")
+const or = document.getElementById("or")
+let prompt = document.getElementById("prompt")
+let prompt2 = document.getElementById("prompt2")
+let homeArray = [
+    onOff,
+    findOut,
+    finOutGenre,
+    prompt,
+    prompt2,
+    or
+]
 const startOver = document.getElementById("startOver")
 let head = document.getElementById("head")
 let input = document.getElementById("artist")
 let inputGenre = document.getElementById("genre")
 let url
 let questionContainer = document.getElementById("questionContainer")
-let prompt = document.getElementById("prompt")
-let prompt2 = document.getElementById("prompt2")
-const or = document.getElementById("or")
 let question = document.getElementById("question")
 let genreImage = document.getElementById("genreImage")
 let boxOneImg = document.getElementById("boxOneImg")
 let boxTwoImg = document.getElementById("boxTwoImg")
 let boxThreeImg = document.getElementById("boxThreeImg")
 let boxFourImg = document.getElementById("boxFourImg")
+let boxImgArray = [
+    boxOneImg,
+    boxTwoImg,
+    boxThreeImg,
+    boxFourImg
+]
 let boxBut = document.querySelector(".boxBut")
 let butA = document.getElementById("boxButA")
 let butB = document.getElementById("boxButB")

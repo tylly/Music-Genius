@@ -12,7 +12,7 @@ finOutGenre.onclick = async (e) => {
       topAlbumsGenre = data.albums.album.filter((hasImage) => {
         return hasImage.image[2]["#text"].startsWith("https")
       })
-      
+      //if the timer is activated, it will show up when the game starts
       if (timerTrack === 1) {
         setInterval(startTimer, 1000)
         timer.style.display = "inline-block"
@@ -23,25 +23,22 @@ finOutGenre.onclick = async (e) => {
     }
   }
 }
+
+//Once the data is succesfully received and filtered, the game starts with the onSuccessGenre function
 onSuccessGenre = () => {
-  //Here, we get rid of the original prompts and display the question container. Note difference between what is displayed/not displayed
-  //here and with the Onsuccess function in app.js
-  onOff.style.display = "none"
-  boxBut.style.width = 'auto'
-  findOut.style.display = "none"
-  finOutGenre.style.display = "none"
-  prompt.style.display = "none"
-  prompt2.style.display = "none"
-  or.style.display = "none"
+  //hides home page buttons and prompts
+  homeArray.forEach((i) => {
+    i.style.display = "none"
+  })
+  boxImgArray.forEach((i) => {
+    i.style.display = "none"
+  })
   questionContainer.style.display = "flex"
   question.style.display = "flex"
-  boxOneImg.style.display = "none"
-  boxTwoImg.style.display = "none"
-  boxThreeImg.style.display = "none"
-  boxFourImg.style.display = "none"
+
   scoreDisplay.style.display = "flex"
 
-  //This block ends the game after the user has had 5 turns, displaying their results and offering a start over option
+  //This block ends the game after the user has had 5 turns or time runs out if playing with a timer, displaying their results and offering a start over option
   //It also returns out of the onSuccessGenre function so the unecessary code doesn't run
   const gameOver = () => {
     questionContainer.style.display = "none"
@@ -65,11 +62,11 @@ onSuccessGenre = () => {
     }
     return
   }
-
-  if (timerTrack === 1){
+  //if the timer is active, the player has 15 (technically 16) seconds to finish the game before the game over function runs
+  if (timerTrack === 1) {
     setTimeout(gameOver, 16000)
   }
-
+  //if the player answers all of the questions, the game over function runs
   if (turn === 6) {
     gameOver()
   }
