@@ -21,18 +21,18 @@ let homeArray = [
     or
 ]
 const startOver = document.getElementById("startOver")
-let head = document.getElementById("head")
-let input = document.getElementById("artist")
-let inputGenre = document.getElementById("genre")
+const head = document.getElementById("head")
+const input = document.getElementById("artist")
+const inputGenre = document.getElementById("genre")
 let url
-let questionContainer = document.getElementById("questionContainer")
-let question = document.getElementById("question")
-let genreImage = document.getElementById("genreImage")
-let boxOneImg = document.getElementById("boxOneImg")
-let boxTwoImg = document.getElementById("boxTwoImg")
-let boxThreeImg = document.getElementById("boxThreeImg")
-let boxFourImg = document.getElementById("boxFourImg")
-let boxImgArray = [
+const questionContainer = document.getElementById("questionContainer")
+const question = document.getElementById("question")
+const genreImage = document.getElementById("genreImage")
+const boxOneImg = document.getElementById("boxOneImg")
+const boxTwoImg = document.getElementById("boxTwoImg")
+const boxThreeImg = document.getElementById("boxThreeImg")
+const boxFourImg = document.getElementById("boxFourImg")
+const boxImgArray = [
     boxOneImg,
     boxTwoImg,
     boxThreeImg,
@@ -43,6 +43,12 @@ let butA = document.getElementById("boxButA")
 let butB = document.getElementById("boxButB")
 let butC = document.getElementById("boxButC")
 let butD = document.getElementById("boxButD")
+let butArray = [
+    butA,
+    butB,
+    butC,
+    butD
+]
 let scoreDisplay = document.getElementById("score")
 let turn = 1
 let actualScore = 0

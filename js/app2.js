@@ -72,30 +72,23 @@ onSuccessGenre = () => {
 
   //These next blocks randomly choose 4 items out of the topAlbumsGenre array to eventually be used as answer choices.
   //As indexes are chosen, they are spliced out of the array so these indexes can't be chosen more than once. Options that aren't
-  //used as the correct answer are later pushed back into the topAlbums array so they can be used again. I could have just assigned
-  //the Op variables the spliced elements directly, but the syntax gets hard to follow later in the code with this method. Using the randomSelect
-  //variables makes the code more readable
-  let firstRandomSelect = Math.floor(Math.random() * topAlbumsGenre.length)
-  let firstOp = topAlbumsGenre[firstRandomSelect]
-  topAlbumsGenre.splice(firstRandomSelect, 1)
-
-  let secondRandomSelect = Math.floor(Math.random() * topAlbumsGenre.length)
-  let secondOp = topAlbumsGenre[secondRandomSelect]
-  topAlbumsGenre.splice(secondRandomSelect, 1)
-
-  let thirdRandomSelect = Math.floor(Math.random() * topAlbumsGenre.length)
-  let thirdOp = topAlbumsGenre[thirdRandomSelect]
-  topAlbumsGenre.splice(thirdRandomSelect, 1)
-
-  let fourthRandomSelect = Math.floor(Math.random() * topAlbumsGenre.length)
-  let fourthOp = topAlbumsGenre[fourthRandomSelect]
-  topAlbumsGenre.splice(fourthRandomSelect, 1)
-
-  //Buttons are assigned with artist names from the randomly selected answer choices
-  butA.textContent = firstOp.artist.name
-  butB.textContent = secondOp.artist.name
-  butC.textContent = thirdOp.artist.name
-  butD.textContent = fourthOp.artist.name
+  //used as the correct answer are later pushed back into the topAlbums array so they can be used again. 
+  let firstOp = topAlbumsGenre.splice(
+    Math.floor(Math.random() * topAlbumsGenre.length),
+    1
+  )
+  let secondOp = topAlbumsGenre.splice(
+    Math.floor(Math.random() * topAlbumsGenre.length),
+    1
+  )
+  let thirdOp = topAlbumsGenre.splice(
+    Math.floor(Math.random() * topAlbumsGenre.length),
+    1
+  )
+  let fourthOp = topAlbumsGenre.splice(
+    Math.floor(Math.random() * topAlbumsGenre.length),
+    1
+  )
 
   //All of the answer choices are put into an array and grouped with buttons
   let answerChoices = [
@@ -105,19 +98,24 @@ onSuccessGenre = () => {
     [fourthOp, butD],
   ]
 
+  for (let i = 0; i < butArray.length; i++) {
+    butArray[i].textContent = answerChoices[i][0][0].artist.name
+  }
+
   //This block chooses on of the albums to display, and then asks the user which artist the album belongs to
   let correctIndex = Math.floor(Math.random() * answerChoices.length)
   question.textContent = `Whose album is this?`
-  let correctImage = answerChoices[correctIndex][0].image[2]["#text"]
+  let correctImage = answerChoices[correctIndex][0][0].image[2]["#text"]
   genreImage.setAttribute("src", correctImage)
 
-  //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions
+  //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions. 
+  //Becuase they were spliced and are now arrays, the bracket notation pushes just the object and not the whole array
   for (let i = 0; i < answerChoices.length; i++) {
     if (answerChoices[i] !== answerChoices[correctIndex]) {
-      topAlbumsGenre.push(answerChoices[i][0])
+      topAlbumsGenre.push(answerChoices[i][0][0])
     }
   }
-
+  
   //If the button corresponding to the correct answer is clicked, the players score is incremented, the turn is incremented, score is updated
   //and onSuccessGenre runs again
   answerChoices[correctIndex][1].onclick = () => {
