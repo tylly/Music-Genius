@@ -5,14 +5,15 @@
 //Here we declare gobal variables and DOM selectors for use in all js files.
 let topAlbums = []
 let topAlbumsGenre = []
+const scoreDisplay = document.getElementById("score")
 const timer = document.getElementById("timer")
-let onOff = document.getElementById("onOff")
+const onOff = document.getElementById("onOff")
 const findOut = document.getElementById("findOutArtist")
 const finOutGenre = document.getElementById("findOutGenre")
 const or = document.getElementById("or")
-let prompt = document.getElementById("prompt")
-let prompt2 = document.getElementById("prompt2")
-let homeArray = [
+const prompt = document.getElementById("prompt")
+const prompt2 = document.getElementById("prompt2")
+const homeArray = [
     onOff,
     findOut,
     finOutGenre,
@@ -24,7 +25,6 @@ const startOver = document.getElementById("startOver")
 const head = document.getElementById("head")
 const input = document.getElementById("artist")
 const inputGenre = document.getElementById("genre")
-let url
 const questionContainer = document.getElementById("questionContainer")
 const question = document.getElementById("question")
 const genreImage = document.getElementById("genreImage")
@@ -38,18 +38,18 @@ const boxImgArray = [
     boxThreeImg,
     boxFourImg
 ]
-let boxBut = document.querySelector(".boxBut")
-let butA = document.getElementById("boxButA")
-let butB = document.getElementById("boxButB")
-let butC = document.getElementById("boxButC")
-let butD = document.getElementById("boxButD")
-let butArray = [
+const boxBut = document.querySelector(".boxBut")
+const butA = document.getElementById("boxButA")
+const butB = document.getElementById("boxButB")
+const butC = document.getElementById("boxButC")
+const butD = document.getElementById("boxButD")
+const butArray = [
     butA,
     butB,
     butC,
     butD
 ]
-let scoreDisplay = document.getElementById("score")
+
 let turn = 1
 let actualScore = 0
 let timeCount = 16

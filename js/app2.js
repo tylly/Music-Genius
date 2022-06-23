@@ -29,12 +29,12 @@ onSuccessGenre = () => {
   homeArray.forEach((i) => {
     i.style.display = "none"
   })
+  //removes image boxes from answers
   boxImgArray.forEach((i) => {
     i.style.display = "none"
   })
   questionContainer.style.display = "flex"
   question.style.display = "flex"
-
   scoreDisplay.style.display = "flex"
 
   //This block ends the game after the user has had 5 turns or time runs out if playing with a timer, displaying their results and offering a start over option
