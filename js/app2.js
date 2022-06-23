@@ -12,8 +12,11 @@ finOutGenre.onclick = async (e) => {
       topAlbumsGenre = data.albums.album.filter((hasImage) => {
         return hasImage.image[2]["#text"].startsWith("https")
       })
-      console.log(topAlbumsGenre)
-
+      
+      if (timerTrack === 1) {
+        setInterval(startTimer, 1000)
+        timer.style.display = "inline-block"
+      }
       onSuccessGenre()
     } catch (e) {
       console.error(e)
@@ -23,6 +26,7 @@ finOutGenre.onclick = async (e) => {
 onSuccessGenre = () => {
   //Here, we get rid of the original prompts and display the question container. Note difference between what is displayed/not displayed
   //here and with the Onsuccess function in app.js
+  onOff.style.display = "none"
   boxBut.style.width = 'auto'
   findOut.style.display = "none"
   finOutGenre.style.display = "none"
@@ -39,9 +43,10 @@ onSuccessGenre = () => {
 
   //This block ends the game after the user has had 5 turns, displaying their results and offering a start over option
   //It also returns out of the onSuccessGenre function so the unecessary code doesn't run
-  if (turn === 6) {
+  const gameOver = () => {
     questionContainer.style.display = "none"
     question.style.display = "none"
+    timer.style.display = "none"
     if (actualScore === 0) {
       prompt2.textContent = `WEAK! You answered ${actualScore} out of 5 correctly.`
     } else if (actualScore <= 3) {
@@ -59,6 +64,14 @@ onSuccessGenre = () => {
       location.reload()
     }
     return
+  }
+
+  if (timerTrack === 1){
+    setTimeout(gameOver, 16000)
+  }
+
+  if (turn === 6) {
+    gameOver()
   }
 
   //These next blocks randomly choose 4 items out of the topAlbumsGenre array to eventually be used as answer choices.

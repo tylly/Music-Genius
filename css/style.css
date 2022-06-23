@@ -81,10 +81,15 @@ body {
   border-radius: 50px;
   font-size: 15px;
   padding: 20px 20px 20px 20px;
-  margin-top: 0px;
+  margin-top: 10px;
   max-width: 150px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#onOff:hover {
+  border: 1px solid goldenrod;
+  color: goldenrod;
 }
 
 #count {
@@ -126,12 +131,13 @@ body {
 
 #timer {
   color: teal;
-  position: absolute;
   width: 100%;
-  margin-left: 48.5%;
+  text-align: center;
+  
   font-size: 50px;
   text-decoration: underline;
   text-decoration-color: goldenrod;
+  display: none;
 }
 
 #score {

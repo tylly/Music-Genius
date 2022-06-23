@@ -7,11 +7,11 @@ findOut.onclick = async (e) => {
     const data = await res.json()
 
     //This filter method gets rid of any array elements that dont have image urls.
-    almostTopAlbums = data.topalbums.album.filter((hasImage) => {
+    let almostTopAlbums = data.topalbums.album.filter((hasImage) => {
       return hasImage.image[2]["#text"].startsWith("https")
     })
-    
-    //This filter gets rid of multiple versions of the same album. 
+
+    //This filter gets rid of multiple versions of the same album.
     //For example, Tha Carter III and Tha Carter III (super ultra mega extended remastered explicit)
     topAlbums = almostTopAlbums.filter((noRepeate) => {
       if (noRepeate.name.includes("(")) {
@@ -20,12 +20,13 @@ findOut.onclick = async (e) => {
         return true
       }
     })
-    console.log(topAlbums)
-    
+
     //Once the data is succesfully received and filtered, the game starts with the onSuccess function
-    timeCount = 16
+    if (timerTrack === 1) {
+      setInterval(startTimer, 1000)
+      timer.style.display = "inline-block"
+    }
     onSuccess()
-    setInterval(startTimer, 1000)
   } catch (e) {
     console.error(e)
   }
@@ -38,6 +39,7 @@ const startTimer = () => {
 
 const onSuccess = () => {
   //Here, we get rid of the original prompts and display the question container
+  onOff.style.display = "none"
   findOut.style.display = "none"
   finOutGenre.style.display = "none"
   prompt.style.display = "none"
@@ -47,11 +49,13 @@ const onSuccess = () => {
   question.style.display = "flex"
   scoreDisplay.style.display = "flex"
 
+  
   //This block ends the game after the user has had 5 turns, displaying their results and offering a start over option
   //It also returns out of the onSuccess function so the unecessary code doesn't run
-  if (turn === 6) {
+  const gameOver = () => {
     questionContainer.style.display = "none"
     question.style.display = "none"
+    timer.style.display = "none"
     if (actualScore === 0) {
       prompt.textContent = `WEAK! You answered ${actualScore} out of 5 correctly.`
     } else if (actualScore <= 3) {
@@ -68,6 +72,14 @@ const onSuccess = () => {
       location.reload()
     }
     return
+  }
+  
+  if (timerTrack === 1){
+    setTimeout(gameOver, 16000)
+  }
+
+  if (turn === 6) {
+    gameOver()
   }
 
   //These next blocks randomly choose 4 items out of the topAlbums array to eventually be used as answer choices.

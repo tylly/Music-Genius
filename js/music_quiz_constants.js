@@ -4,11 +4,9 @@
 
 //Here we declare gobal variables and DOM selectors for use in all js files.
 let topAlbums = []
-let almostTopAlbums = []
 let topAlbumsGenre = []
 const timer = document.getElementById("timer")
 let onOff = document.getElementById("onOff")
-let timerGov = false
 const findOut = document.getElementById("findOutArtist")
 const finOutGenre = document.getElementById("findOutGenre")
 const startOver = document.getElementById("startOver")
@@ -34,7 +32,7 @@ let butD = document.getElementById("boxButD")
 let scoreDisplay = document.getElementById("score")
 let turn = 1
 let actualScore = 0
-let timeCount = 0
+let timeCount = 16
 let timerTrack = 0
 
 const change = () => {
