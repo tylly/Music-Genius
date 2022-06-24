@@ -8,12 +8,13 @@ let topAlbumsGenre = []
 const scoreDisplay = document.getElementById("score")
 const timer = document.getElementById("timer")
 const onOff = document.getElementById("onOff")
+const timeChoice = document.getElementById("timeChoice")
 const findOut = document.getElementById("findOutArtist")
 const finOutGenre = document.getElementById("findOutGenre")
 const or = document.getElementById("or")
 const prompt = document.getElementById("prompt")
 const prompt2 = document.getElementById("prompt2")
-const homeArray = [onOff, findOut, finOutGenre, prompt, prompt2, or]
+const homeArray = [onOff, timeChoice, findOut, finOutGenre, prompt, prompt2, or]
 const startOver = document.getElementById("startOver")
 const head = document.getElementById("head")
 const input = document.getElementById("artist")
@@ -47,6 +48,11 @@ const change = () => {
     timerTrack--
     onOff.textContent = "Timer: Off"
     onOff.style.background = "transparent"
+  }
+  if (timerTrack === 1) {
+    timeChoice.style.display = "flex"
+  } else {
+    timeChoice.style.display = "none"
   }
 }
 

@@ -7,6 +7,7 @@ findOut.onclick = async (e) => {
     const data = await res.json()
     //if the timer is activated, it will display when the game starts
     if (timerTrack === 1) {
+      timeCount = timeChoice.value
       setInterval(startTimer, 1000)
       timer.style.display = "inline-block"
     }
@@ -71,7 +72,7 @@ const onSuccess = () => {
   }
   //if the timer is active, the player has 15 (technically 16) seconds to finish the game before the game over function runs
   if (timerTrack === 1) {
-    setTimeout(gameOver, 16000)
+    setTimeout(gameOver, timeChoice.value*1000)
   }
   //if the player answers all of the questions, the game over function runs
   if (turn === 6) {

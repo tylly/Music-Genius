@@ -2,7 +2,6 @@
 
 body {
   font-family: lato;
-  /* background-image: url("css/carti.jpg"); */
   background-color: rgb(209, 214, 216);
   background-size: cover;
   background-position: center;
@@ -25,6 +24,8 @@ body {
 
 #or {
   text-decoration: underline;
+  margin-top: 0px;
+  margin-bottom: 5px;
 }
 
 #buttons {
@@ -38,10 +39,9 @@ body {
   text-align: center;
   border: 1px solid teal;
   border-radius: 50px;
-  font-size: 15px;
-  padding: 20px 20px 20px 20px;
-  margin-top: 15px;
-  width: 140px;
+  font-size: 10px;
+  padding: 10px 10px 10px 10px;
+  margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -60,9 +60,9 @@ body {
   text-align: center;
   border: 1px solid teal;
   border-radius: 50px;
-  font-size: 15px;
-  padding: 20px 20px 20px 20px;
-  margin-top: 20px;
+  font-size: 10px;
+  padding: 10px 10px 10px 10px;
+  margin-top: 5px;
 }
 
 #findOutGenre:hover {
@@ -79,9 +79,8 @@ body {
   text-align: center;
   border: 1px solid teal;
   border-radius: 50px;
-  font-size: 15px;
-  padding: 20px 20px 20px 20px;
-  margin-top: 10px;
+  font-size: 10px;
+  padding: 10px 10px 10px 10px;
   max-width: 150px;
   margin-left: auto;
   margin-right: auto;
@@ -90,6 +89,34 @@ body {
 #onOff:hover {
   border: 1px solid goldenrod;
   color: goldenrod;
+}
+
+#timeChoice {
+  color: goldenrod;
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid teal;
+  border-radius: 50px;
+  font-size: 10px;
+  padding: 5px 5px 5px 5px;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  display: none;
+}
+
+#timeChoice:focus {
+  outline: none;
+}
+
+#timeChoice:focus::placeholder {
+  color: transparent;
+}
+
+#timeChoice::placeholder {
+  color: teal;
+  text-decoration: underline;
+  text-decoration-color: goldenrod;
 }
 
 #count {
@@ -105,7 +132,7 @@ body {
   border: 1px solid teal;
   border-radius: 50px;
   font-size: 15px;
-  padding: 20px 20px 20px 20px;
+  padding: 10px 10px 10px 10px;
   margin-top: 50px;
   display: none;
 }
@@ -133,7 +160,6 @@ body {
   color: teal;
   width: 100%;
   text-align: center;
-  
   font-size: 50px;
   text-decoration: underline;
   text-decoration-color: goldenrod;
@@ -157,7 +183,7 @@ body {
   border: 0px;
   text-align: center;
   width: 100%;
-  font-size: 32px;
+  font-size: 20px;
   font-family: lato;
   text-decoration: underline;
   text-decoration-color: goldenrod;
@@ -183,7 +209,7 @@ body {
   border: 0px;
   text-align: center;
   width: 100%;
-  font-size: 32px;
+  font-size: 20px;
   font-family: lato;
   text-decoration: underline;
   text-decoration-color: goldenrod;
@@ -203,15 +229,21 @@ body {
   text-decoration-color: goldenrod;
 }
 
+#genreImage {
+  max-width: 120px;
+  max-height: 120px;
+}
+
 #question {
   text-decoration: underline;
   text-decoration-color: goldenrod;
+  font-size: 20px;
 }
 
 #questionContainer {
   display: none;
   justify-content: space-around;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .boxes {
@@ -220,8 +252,8 @@ body {
 }
 
 .boxImg {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   display: flex;
 }
 .boxBut {
@@ -231,8 +263,8 @@ body {
   border: 1px solid teal;
   border-radius: 50px;
   font-size: 15px;
-  padding: 20px 20px 20px 20px;
-  margin-top: 50px;
+  padding: 10px 10px 10px 10px;
+  margin-top: 10px;
 }
 
 .boxBut:hover {
@@ -245,12 +277,14 @@ body {
 }
 
 #prompt {
+  font-size: 20px;
   margin: 0px 0px 0px 0px;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 #prompt2 {
   margin: 0px 0px 0px 0px;
+  font-size: 20px;
 }
 
 #q {
