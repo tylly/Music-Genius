@@ -47,7 +47,7 @@ let fourthOp
 
 let turn = 1
 let actualScore = 0
-let timeCount = 16
+let timeCount
 let timerTrack = 0
 
 const change = () => {

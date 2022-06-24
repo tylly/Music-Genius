@@ -18,6 +18,7 @@ finOutGenre.onclick = async (e) => {
         setInterval(startTimer, 1000)
         timer.style.display = "inline-block"
       }
+      timer.textContent = timeCount
       onSuccessGenre()
     } catch (e) {
       console.error(e)
@@ -62,7 +63,7 @@ onSuccessGenre = () => {
     }
     return
   }
-  //if the timer is active, the player has 15 (technically 16) seconds to finish the game before the game over function runs
+  //if the timer is active, the player has 15 seconds to finish the game before the game over function runs
   if (timerTrack === 1) {
     setTimeout(gameOver, timeChoice.value * 1000)
   }
@@ -88,7 +89,7 @@ onSuccessGenre = () => {
   let correctImage = answerChoices[correctIndex][0][0].image[2]["#text"]
   genreImage.setAttribute("src", correctImage)
 
-  //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions.
+  //All 3 elements not used as the correct answer are pushed back into the topAlbumsGenre so they can be used in future questions.
   //Becuase they were spliced and are now arrays, the bracket notation pushes just the object and not the whole array
   for (let i = 0; i < answerChoices.length; i++) {
     if (answerChoices[i] !== answerChoices[correctIndex]) {

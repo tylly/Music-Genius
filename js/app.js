@@ -16,6 +16,8 @@ findOut.onclick = async (e) => {
       return hasImage.image[2]["#text"].startsWith("https")
     })
 
+    timer.textContent = timeCount
+
     //This filter attempts gets rid of multiple versions of the same album.
     //For example, Tha Carter III and Tha Carter III (super ultra mega extended remastered deluxe explicit)
     //I further mitigated this by limiting the search results, as they are ordered by popularity
@@ -34,7 +36,7 @@ findOut.onclick = async (e) => {
 }
 const startTimer = () => {
   timeCount--
-  timer.textContent = `${timeCount}`
+  timer.textContent = timeCount
 }
 
 //Once the data is succesfully received and filtered, the game starts with the onSuccess function
@@ -47,7 +49,7 @@ const onSuccess = () => {
   question.style.display = "flex"
   scoreDisplay.style.display = "flex"
 
-  //This block ends the game after the user has had 5 turns, displaying their results and offering a start over option
+  //This block ends the game after the user has had 5 turns or time runs out, displaying their results and offering a start over option
   //It also returns out of the onSuccess function so the unecessary code doesn't run
   const gameOver = () => {
     questionContainer.style.display = "none"
@@ -70,7 +72,7 @@ const onSuccess = () => {
     }
     return
   }
-  //if the timer is active, the player has 15 (technically 16) seconds to finish the game before the game over function runs
+  //if the timer is active, the player has 15 seconds to finish the game before the game over function runs
   if (timerTrack === 1) {
     setTimeout(gameOver, timeChoice.value * 1000)
   }
@@ -94,8 +96,8 @@ const onSuccess = () => {
   let correctIndex = Math.floor(Math.random() * answerChoices.length)
   question.textContent = `Which ${input.value} album is "${answerChoices[correctIndex][0][0].name}"?`
 
-  //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions. Because they were spliced
-  //, they are now arrays, so the bracket notation here ensures just the object is pushed back.
+  //All 3 elements not used as the correct answer are pushed back into the topAlbums so they can be used in future questions.
+  //Becuase they were spliced and are now arrays, the bracket notation pushes just the object and not the whole array
   for (let i = 0; i < answerChoices.length; i++) {
     if (answerChoices[i] !== answerChoices[correctIndex]) {
       topAlbums.push(answerChoices[i][0][0])
