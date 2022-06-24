@@ -72,28 +72,18 @@ const onSuccess = () => {
   }
   //if the timer is active, the player has 15 (technically 16) seconds to finish the game before the game over function runs
   if (timerTrack === 1) {
-    setTimeout(gameOver, timeChoice.value*1000)
+    setTimeout(gameOver, timeChoice.value * 1000)
   }
   //if the player answers all of the questions, the game over function runs
   if (turn === 6) {
     gameOver()
   }
 
-  //These next lines randomly splice 4 items out of the topAlbums array to eventually be used as answer choices.
+  //Randomly splice 4 items out of the topAlbums array to eventually be used as answer choices in the globacl answerChoices array.
   //They are spliced out of the array one by one so they can't be chosen more than once. Options that aren't
   //used as the correct answer are later pushed back into the topAlbums array as objects so they can be used again.
-  let firstOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
-  let secondOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
-  let thirdOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
-  let fourthOp = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)
-
-  //Create the answer choices array, grouping together the selected topAlbums elements with buttons
-  let answerChoices = [
-    [firstOp, butA],
-    [secondOp, butB],
-    [thirdOp, butC],
-    [fourthOp, butD],
-  ]
+  answerChoices.forEach((i) => {
+    i[0] = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)})
 
   //Here, the images from the answer choices are displayed in the box images. Splice returns elements in an array, so the bracket notation is needed.
   for (let i = 0; i < boxImgArray.length; i++) {

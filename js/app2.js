@@ -64,29 +64,20 @@ onSuccessGenre = () => {
   }
   //if the timer is active, the player has 15 (technically 16) seconds to finish the game before the game over function runs
   if (timerTrack === 1) {
-    setTimeout(gameOver, timeChoice.value*1000)
+    setTimeout(gameOver, timeChoice.value * 1000)
   }
   //if the player answers all of the questions, the game over function runs
   if (turn === 6) {
     gameOver()
   }
 
-  //These next blocks randomly choose 4 items out of the topAlbumsGenre array to eventually be used as answer choices.
+  //Randomly choose 4 items out of the topAlbumsGenre array to eventually be used as answer choices in the global answerChoices array.
   //As indexes are chosen, they are spliced out of the array so these indexes can't be chosen more than once. Options that aren't
   //used as the correct answer are later pushed back into the topAlbums array so they can be used again.
-  let firstOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length), 1)
-  let secondOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length),1)
-  let thirdOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length),1)
-  let fourthOp = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length),1)
+  answerChoices.forEach((i) => {
+    i[0] = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length), 1)})
 
-  //All of the answer choices are put into an array and grouped with buttons
-  let answerChoices = [
-    [firstOp, butA],
-    [secondOp, butB],
-    [thirdOp, butC],
-    [fourthOp, butD],
-  ]
-
+  //asign artist name choices to button text
   for (let i = 0; i < butArray.length; i++) {
     butArray[i].textContent = answerChoices[i][0][0].artist.name
   }

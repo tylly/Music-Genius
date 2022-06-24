@@ -33,6 +33,17 @@ const butB = document.getElementById("boxButB")
 const butC = document.getElementById("boxButC")
 const butD = document.getElementById("boxButD")
 const butArray = [butA, butB, butC, butD]
+let firstOp 
+let secondOp
+let thirdOp
+let fourthOp
+  //Create the answer choices array, grouping together the selected album elements with buttons.
+  let answerChoices = [
+    [firstOp, butA],
+    [secondOp, butB],
+    [thirdOp, butC],
+    [fourthOp, butD],
+  ]
 
 let turn = 1
 let actualScore = 0
