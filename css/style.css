@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+@media only screen and (min-width: 600px) {
 
 body {
   font-family: lato;
@@ -20,6 +21,7 @@ body {
 #head {
   text-decoration: underline;
   text-decoration-color: goldenrod;
+  font-size: 70px;
 }
 
 #or {
@@ -37,7 +39,7 @@ body {
   color: goldenrod;
   background-color: transparent;
   text-align: center;
-  border: 1px solid teal;
+  border: 1px solid rgb(83, 194, 194);
   border-radius: 50px;
   font-size: 10px;
   padding: 10px 10px 10px 10px;
@@ -131,8 +133,8 @@ body {
   text-align: center;
   border: 1px solid teal;
   border-radius: 50px;
-  font-size: 15px;
-  padding: 10px 10px 10px 10px;
+  font-size: 45px;
+  padding: 20px 20px 20px 20px;
   margin-top: 50px;
   display: none;
 }
@@ -171,7 +173,7 @@ body {
   position: absolute;
   top: 0;
   right: 10px;
-  font-size: 15px;
+  font-size: 20px;
   display: none;
   text-decoration: underline;
   text-decoration-color: goldenrod;
@@ -237,12 +239,12 @@ body {
 #question {
   text-decoration: underline;
   text-decoration-color: goldenrod;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 #questionContainer {
   display: none;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 10px;
 }
 
@@ -252,19 +254,21 @@ body {
 }
 
 .boxImg {
-  height: 80px;
-  width: 80px;
+  height: 200px;
+  width: 200px;
+  padding: 10px 10px 10px 10px;
   display: flex;
 }
 .boxBut {
   color: white;
   background-color: transparent;
-  text-align: center;
   border: 1px solid teal;
   border-radius: 50px;
-  font-size: 15px;
-  padding: 10px 10px 10px 10px;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 .boxBut:hover {
@@ -277,7 +281,7 @@ body {
 }
 
 #prompt {
-  font-size: 20px;
+  font-size: 40px;
   margin: 0px 0px 0px 0px;
   margin-top: 5px;
 }
@@ -299,11 +303,4 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-
-/* @media only screen and (max-width: 600px) {
-  #boxImg {
-    width: 50px;
-    height: 50px;
-    display: table-column;
-  }
-} */
+}
