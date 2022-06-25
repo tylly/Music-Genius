@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
-@media only screen and (min-width: 600px) {
 
 body {
   font-family: lato;
@@ -311,5 +310,4 @@ body {
   color: teal;
   margin-left: auto;
   margin-right: auto;
-}
 }
