@@ -21,13 +21,14 @@ body {
 #head {
   text-decoration: underline;
   text-decoration-color: goldenrod;
-  font-size: 70px;
+  font-size: 60px;
 }
 
 #or {
   text-decoration: underline;
   margin-top: 0px;
   margin-bottom: 5px;
+  font-size: 40px;
 }
 
 #buttons {
@@ -42,10 +43,11 @@ body {
   border: 1px solid rgb(83, 194, 194);
   border-radius: 50px;
   font-size: 10px;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 20px 20px 20px;
   margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
+  font-size: large;
 }
 
 #findOutArtist:hover {
@@ -60,11 +62,14 @@ body {
   color: goldenrod;
   background-color: transparent;
   text-align: center;
-  border: 1px solid teal;
+  border: 1px solid rgb(83, 194, 194);
   border-radius: 50px;
   font-size: 10px;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 20px 20px 20px;
   margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: large;
 }
 
 #findOutGenre:hover {
@@ -79,13 +84,14 @@ body {
   color: goldenrod;
   background-color: transparent;
   text-align: center;
-  border: 1px solid teal;
+  border: 1px solid rgb(83, 194, 194);
   border-radius: 50px;
   font-size: 10px;
-  padding: 10px 10px 10px 10px;
-  max-width: 150px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
+  font-size: large;
 }
 
 #onOff:hover {
@@ -97,13 +103,14 @@ body {
   color: goldenrod;
   background-color: transparent;
   text-align: center;
-  border: 1px solid teal;
+  border: 1px solid rgb(83, 194, 194);
   border-radius: 50px;
   font-size: 10px;
-  padding: 5px 5px 5px 5px;
-  margin-top: 3px;
+  padding: 10px 10px 10px 10px;
+  margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
+  font-size: large;
   display: none;
 }
 
@@ -133,7 +140,7 @@ body {
   text-align: center;
   border: 1px solid teal;
   border-radius: 50px;
-  font-size: 45px;
+  font-size: 30px;
   padding: 20px 20px 20px 20px;
   margin-top: 50px;
   display: none;
@@ -172,7 +179,7 @@ body {
   color: teal;
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 10px;j
   font-size: 20px;
   display: none;
   text-decoration: underline;
@@ -189,6 +196,8 @@ body {
   font-family: lato;
   text-decoration: underline;
   text-decoration-color: goldenrod;
+  font-size: 32px;
+
 }
 
 #artist:focus {
@@ -211,7 +220,7 @@ body {
   border: 0px;
   text-align: center;
   width: 100%;
-  font-size: 20px;
+  font-size: 40px;
   font-family: lato;
   text-decoration: underline;
   text-decoration-color: goldenrod;
@@ -232,8 +241,8 @@ body {
 }
 
 #genreImage {
-  max-width: 120px;
-  max-height: 120px;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 #question {
@@ -264,11 +273,11 @@ body {
   background-color: transparent;
   border: 1px solid teal;
   border-radius: 50px;
-  font-size: 30px;
+  font-size: 20px;
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 10px;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 20px 20px 20px;
 }
 
 .boxBut:hover {
@@ -288,7 +297,7 @@ body {
 
 #prompt2 {
   margin: 0px 0px 0px 0px;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 #q {
