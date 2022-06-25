@@ -1,7 +1,7 @@
 //Here, the user is electing to play the game with artists. The functionality for the Genre game is in app2.js. A fetch request is sent
 //using LastFM's get top albums from an artist method, which is reflected in the link.
 findOutArtist.onclick = async (e) => {
-  url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=30`
+  url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=30`
   try {
     const res = await fetch(url)
     const data = await res.json()

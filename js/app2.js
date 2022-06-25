@@ -2,7 +2,7 @@
 //using LastFM's get top albums from a genre method, which is reflected in the link.
 finOutGenre.onclick = async (e) => {
   if (inputGenre.value) {
-    url = `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${inputGenre.value}&api_key=b6d97def09e924303dab1c829302163b&format=json`
+    url = `https://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${inputGenre.value}&api_key=b6d97def09e924303dab1c829302163b&format=json`
     try {
       const res = await fetch(url)
       const data = await res.json()
