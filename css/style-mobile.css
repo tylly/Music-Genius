@@ -2,7 +2,7 @@
 @media only screen and (max-width: 600px) {
     body {
       font-family: lato;
-      background-color: black;
+      background-color: rgb(209, 214, 216);
       background-size: cover;
       background-position: center;
       display: flex;
