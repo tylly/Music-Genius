@@ -12,6 +12,7 @@ const input = document.getElementById("artist")
 const inputGenre = document.getElementById("genre")
 const questionContainer = document.getElementById("questionContainer")
 const question = document.getElementById("question")
+const gameArray = [question, questionContainer, scoreDisplay]
 const genreImage = document.getElementById("genreImage")
 const boxImgArray = Array.from(questionContainer.getElementsByClassName("boxImg"))
 const butArray = Array.from(questionContainer.getElementsByClassName("boxBut"))

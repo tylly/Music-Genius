@@ -41,16 +41,23 @@ const onSuccess = () => {
   homeArray.forEach((i) => {
     i.style.display = "none"
   })
-  questionContainer.style.display = "flex"
-  question.style.display = "flex"
-  scoreDisplay.style.display = "flex"
+  //displays active game elements
+  gameArray.forEach((i) => {
+    i.style.display = "flex"
+  })
 
   //This block ends the game after the user has had 5 turns or time runs out, displaying their results and offering a start over option
   //It also returns out of the onSuccess function so the unecessary code doesn't run
   const gameOver = () => {
-    questionContainer.style.display = "none"
-    question.style.display = "none"
+    gameArray.forEach((i) => {
+      i.style.display = "none"
+    })
     timer.style.display = "none"
+    prompt.style.display = "block"
+    startOver.style.display = "flex"
+    startOver.onclick = () => {
+      location.reload()
+    }
     if (actualScore === 0) {
       prompt.textContent = `WEAK! You answered ${actualScore} out of 5 correctly.`
     } else if (actualScore <= 3) {
@@ -59,12 +66,6 @@ const onSuccess = () => {
       prompt.textContent = `Nice! You answered ${actualScore} out of 5 correctly.`
     } else {
       prompt.textContent = `Do you manage ${input.value}? You answered ${actualScore} out of 5 correctly.`
-    }
-    prompt.style.display = "block"
-    startOver.style.display = "flex"
-    scoreDisplay.style.display = "none"
-    startOver.onclick = () => {
-      location.reload()
     }
     return
   }
