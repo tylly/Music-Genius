@@ -1,4 +1,4 @@
-//Here, the user is electing to play the game with artists. The functionality for the Genre game is in app2.js. A fetch request is sent
+//Here the user is electing to play the game with artists. The functionality for the Genre game is in app2.js. A fetch request is sent
 //using LastFM's get top albums from an artist method, which is reflected in the link.
 findOutArtist.onclick = async (e) => {
   url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${input.value}&api_key=b6d97def09e924303dab1c829302163b&format=json&limit=30`
@@ -11,12 +11,12 @@ findOutArtist.onclick = async (e) => {
       setInterval(startTimer, 1000)
       timer.style.display = "inline-block"
     }
+    //this line sets the displayed time to start at what the user chose
+    timer.textContent = timeCount
     //This filter method gets rid of any array elements that dont have image urls.
     let almostTopAlbums = data.topalbums.album.filter((hasImage) => {
       return hasImage.image[2]["#text"].startsWith("https")
     })
-
-    timer.textContent = timeCount
 
     //This filter attempts gets rid of multiple versions of the same album.
     //For example, Tha Carter III and Tha Carter III (super ultra mega extended remastered deluxe explicit)
@@ -33,10 +33,6 @@ findOutArtist.onclick = async (e) => {
   } catch (e) {
     console.error(e)
   }
-}
-const startTimer = () => {
-  timeCount--
-  timer.textContent = timeCount
 }
 
 //Once the data is succesfully received and filtered, the game starts with the onSuccess function
@@ -72,7 +68,8 @@ const onSuccess = () => {
     }
     return
   }
-  //if the timer is active, the player has 15 seconds to finish the game before the game over function runs
+  //if the timer is active, the player has their elected time to finish the game before the game over function runs
+  //This is seperate from the displayed time
   if (timerTrack === 1) {
     setTimeout(gameOver, timeChoice.value * 1000)
   }
@@ -81,13 +78,13 @@ const onSuccess = () => {
     gameOver()
   }
 
-  //Randomly splice 4 items out of the topAlbums array to eventually be used as answer choices in the globacl answerChoices array.
+  //Randomly splice 4 items out of the topAlbums array to eventually be used as answer choices in the global answerChoices array.
   //They are spliced out of the array one by one so they can't be chosen more than once. Options that aren't
   //used as the correct answer are later pushed back into the topAlbums array as objects so they can be used again.
   answerChoices.forEach((i) => {
     i[0] = topAlbums.splice(Math.floor(Math.random() * topAlbums.length), 1)})
 
-  //Here, the images from the answer choices are displayed in the box images. Splice returns elements in an array, so the bracket notation is needed.
+  //images from the answer choices are displayed in the box images. Splice returns elements in an array, so the bracket notation is needed.
   for (let i = 0; i < boxImgArray.length; i++) {
     boxImgArray[i].setAttribute("src", answerChoices[i][0][0].image[2]["#text"])
   }

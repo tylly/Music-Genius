@@ -7,18 +7,21 @@ finOutGenre.onclick = async (e) => {
       const res = await fetch(url)
       const data = await res.json()
 
-      //This filter method gets rid of any array elements that dont have image urls. This is less common with LastFM's get genre top albums fetch method,
-      //but just in case, it will save headaches.
-      topAlbumsGenre = data.albums.album.filter((hasImage) => {
-        return hasImage.image[2]["#text"].startsWith("https")
-      })
       //if the timer is activated, it will show up when the game starts
       if (timerTrack === 1) {
         timeCount = timeChoice.value
         setInterval(startTimer, 1000)
         timer.style.display = "inline-block"
       }
+      //this line sets the displayed time to start at what the user chose
       timer.textContent = timeCount
+
+      //This filter method gets rid of any array elements that dont have image urls. This is less common with LastFM's get genre top albums fetch method,
+      //but just in case, it will save headaches.
+      topAlbumsGenre = data.albums.album.filter((hasImage) => {
+        return hasImage.image[2]["#text"].startsWith("https")
+      })
+
       onSuccessGenre()
     } catch (e) {
       console.error(e)
@@ -63,7 +66,7 @@ onSuccessGenre = () => {
     }
     return
   }
-  //if the timer is active, the player has 15 seconds to finish the game before the game over function runs
+  //if the timer is active, the player has their elected time to finish the game before the game over function runs
   if (timerTrack === 1) {
     setTimeout(gameOver, timeChoice.value * 1000)
   }
@@ -76,7 +79,7 @@ onSuccessGenre = () => {
   //As indexes are chosen, they are spliced out of the array so these indexes can't be chosen more than once. Options that aren't
   //used as the correct answer are later pushed back into the topAlbums array so they can be used again.
   answerChoices.forEach((i) => {
-    i[0] = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length), 1)})
+    i[0] = topAlbumsGenre.splice(Math.floor(Math.random() * topAlbumsGenre.length),1)})
 
   //asign artist name choices to button text
   for (let i = 0; i < butArray.length; i++) {

@@ -15,17 +15,17 @@ const question = document.getElementById("question")
 const genreImage = document.getElementById("genreImage")
 const boxImgArray = Array.from(questionContainer.getElementsByClassName("boxImg"))
 const butArray = Array.from(questionContainer.getElementsByClassName("boxBut"))
-let firstOp 
+let firstOp
 let secondOp
 let thirdOp
 let fourthOp
-  //Create the answer choices array, grouping together the selected album elements with buttons.
-  let answerChoices = [
-    [firstOp, butArray[0]],
-    [secondOp, butArray[1]],
-    [thirdOp, butArray[2]],
-    [fourthOp, butArray[3]],
-  ]
+//Create the answer choices array, grouping together the selected album elements with buttons.
+let answerChoices = [
+  [firstOp, butArray[0]],
+  [secondOp, butArray[1]],
+  [thirdOp, butArray[2]],
+  [fourthOp, butArray[3]],
+]
 
 let turn = 1
 let actualScore = 0
@@ -47,6 +47,10 @@ const change = () => {
   } else {
     timeChoice.style.display = "none"
   }
+}
+const startTimer = () => {
+  timeCount--
+  timer.textContent = timeCount
 }
 
 onOff.onclick = change
